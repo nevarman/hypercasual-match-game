@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40900293ebfe2e6698ed0711ad85c56, type: 3}
+  m_Name: New Hex Board Settings
+  m_EditorClassIdentifier: 
+  outerRadius: 1.3
+  innerRadius: 1.2
+  width: 7
+  height: 6
+  hexCellPrefab: {fileID: 3681362144601938785, guid: 1d283b9c85af155f1879b8ea226854d5,
+    type: 3}
+  hexBlockPrefabs:
+  - {fileID: 4354681069989197096, guid: b9cd6b71949a62046a868ebc6887a8f8, type: 3}
+  - {fileID: 4223714982267850933, guid: 480560b7e9c300233916a33162408f9b, type: 3}
+  - {fileID: 8794350746221630095, guid: b5d2660c832c1b0459859dd88802af93, type: 3}
+  - {fileID: 6391118713130203213, guid: ce13466ecfc21cce297a4bc310c8b1cd, type: 3}
+  - {fileID: 1719294593905498285, guid: 21ae981830fedc9db941e7ced07ee454, type: 3}
+  dropSpeed: 2
+  waitForRefill: 0.5
+  scoreAddition: 10
+  scoreAdditionSpecial: 50
+  endScore: 100
+  specialHexEffect: {fileID: 4682268019345613869, guid: 9be18f0a58645137ebf5cab43c06ac5f,
+    type: 3}
