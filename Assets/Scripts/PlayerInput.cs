@@ -47,6 +47,8 @@ namespace HyperCasualMatchGame
 
         private void Submit()
         {
+            if(_selectedTiles.Count == 0)
+                return;
             if (_selectedTiles.Count < 3)
             {
                 ResetTiles();
