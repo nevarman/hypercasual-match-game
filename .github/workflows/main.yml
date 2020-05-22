@@ -1,0 +1,15 @@
+- name: Unity - Builder
+  uses: webbertakken/unity-builder@v0.15
+  with:
+    # Version of unity to use for building the project.
+    unityVersion: # optional, default is 
+    # Platform that the build should target.
+    targetPlatform: # optional, default is 
+    # Relative path to the project to be built.
+    projectPath: # optional, default is 
+    # Name of the build.
+    buildName: # optional, default is 
+    # Path where the builds should be stored.
+    buildsPath: # optional, default is 
+    # Path to a Namespace.Class.StaticMethod to run to perform the build.
+    buildMethod: # optional, default is 
