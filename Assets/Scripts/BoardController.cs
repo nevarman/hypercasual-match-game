@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using HyperCasualMatchGame.Audio;
 using UnityEngine;
 namespace HyperCasualMatchGame
 {
@@ -28,12 +29,13 @@ namespace HyperCasualMatchGame
         public void CheckSelectedTiles(object source, TilesSelectedEventArgs args)
         {
             var tiles = args.SelectedTiles;
-            // Check equals
-            var equals = !(tiles.Any(o => o != tiles[0]));
+            // Check equals, get a tile thats not special to check
+            var equals = !(tiles.Any(o => o != tiles.FirstOrDefault(t => !t.isSpecial)));
             if (!equals)
             {
                 // Reset States
                 tiles.ForEach(t => t.transform.localScale = Vector3.one);
+                AudioController.Instance.PlayFailSound();
             }
             else
             {
@@ -48,6 +50,7 @@ namespace HyperCasualMatchGame
                         _hexCellGenerator.NumOfSpecialHex -= 1;
                         score += _settings.scoreAdditionSpecial;
                         Instantiate(_settings.specialHexEffect, t.transform.position, Quaternion.identity);
+                        AudioController.Instance.PlaySpecialSound();
                     }
                     else
                     {
@@ -56,6 +59,7 @@ namespace HyperCasualMatchGame
                     Destroy(t.gameObject);
                 });
                 // Invoke score event
+                AudioController.Instance.PlaySuccesSound();
                 ScoreChanged?.Invoke(score);
                 StartCoroutine(DecreaseRows());
             }
@@ -110,6 +114,7 @@ namespace HyperCasualMatchGame
                     }
                 }
             }
+            AudioController.Instance.PlayHexSound();
         }
         /// <summary>
         /// Moves the hex blocks down until they have locally zero position

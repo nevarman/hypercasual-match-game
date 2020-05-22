@@ -28,6 +28,6 @@ MonoBehaviour:
   waitForRefill: 0.5
   scoreAddition: 10
   scoreAdditionSpecial: 50
-  endScore: 100
+  endScore: 500
   specialHexEffect: {fileID: 4682268019345613869, guid: 9be18f0a58645137ebf5cab43c06ac5f,
     type: 3}

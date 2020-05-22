@@ -12,7 +12,6 @@ namespace HyperCasualMatchGame
         private EndUI _endUI;
         private ScoreUIController _scoreUIController;
 
-
         void Awake()
         {
             // Create board and player input

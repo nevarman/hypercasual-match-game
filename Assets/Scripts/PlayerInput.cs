@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using HyperCasualMatchGame.Audio;
+
 namespace HyperCasualMatchGame
 {
     public class TilesSelectedEventArgs : EventArgs
@@ -60,6 +62,7 @@ namespace HyperCasualMatchGame
             {
                 item.transform.localScale = Vector3.one;
             }
+            AudioController.Instance.PlayFailSound();
         }
 
         private void CheckPlayerInput()
