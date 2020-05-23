@@ -1,4 +1,6 @@
-# Hypercasual Match 3 Game Exapmle
+# Hypercasual Match 3 Game Example
+
+![Build Project](https://github.com/nevarman/hypercasual-match-game/workflows/Build%20Project/badge.svg)
 
 A match3 game example game.
 
