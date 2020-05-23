@@ -1,4 +1,4 @@
-name: Actions
+name: Build Project
 
 on:
   pull_request: {}
@@ -8,38 +8,34 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  build:
-    name: Build my project
+  buildForSomePlatforms:
+    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        unityVersion:
+          - 2019.3.13f1
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
     steps:
-    
-      # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           lfs: true
-    
-      # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: Library
-          key: Library
-      
-      - name: Activate Unity
-        uses: webbertakken/unity-activate@v1.2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
-      # Build
-      - name: Build project
-        uses: webbertakken/unity-builder@v0.10
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      - uses: webbertakken/unity-builder@<version>
         with:
-          unityVersion: 2019.3.13f1
-          targetPlatform: StandaloneWindows64
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        
-      # Output 
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v1
         with:
           name: Build
