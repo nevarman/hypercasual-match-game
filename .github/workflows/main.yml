@@ -38,12 +38,6 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
-      # Test
-      - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.3
-        with:
-          unityVersion: 2019.3.13f1
-
       # Build
       - name: Build project
         uses: webbertakken/unity-builder@v0.10
